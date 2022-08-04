@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Category {
   final String? id;
   final String? categoryPrefName;
-  final String? catgeoryPrefShortCode;
+  final String? categoryPrefShortCode;
   final String? description;
   final DocumentReference? organisation;
   final DocumentReference? parent;
@@ -13,7 +13,7 @@ class Category {
   Category(
       {required this.id,
       required this.categoryPrefName,
-      required this.catgeoryPrefShortCode,
+      required this.categoryPrefShortCode,
       required this.description,
       required this.organisation,
       required this.parent,
@@ -23,7 +23,7 @@ class Category {
   Map<String, dynamic> toMap() {
     return {
       'categoryPrefName': categoryPrefName,
-      'catgeoryPrefShortCode': catgeoryPrefShortCode,
+      'categoryPrefShortCode': categoryPrefShortCode,
       'description': description,
       'organisation': organisation,
       'parent': parent,
@@ -35,7 +35,7 @@ class Category {
   factory Category.fromDoc(QueryDocumentSnapshot doc) {
     return Category(
       categoryPrefName: (doc.data() as dynamic)['categoryPrefName'],
-      catgeoryPrefShortCode: (doc.data() as dynamic)['catgeoryPrefShortCode'],
+      categoryPrefShortCode: (doc.data() as dynamic)['categoryPrefShortCode'],
       description: (doc.data() as dynamic)['description'],
       organisation: (doc.data() as dynamic)['organisation'],
       parent: (doc.data() as dynamic)['parent'],
