@@ -11,7 +11,7 @@ class Category {
   final String? titleShortCode;
 
   Category(
-      {required this.id,
+      {this.id,
       required this.categoryPrefName,
       required this.categoryPrefShortCode,
       required this.description,
@@ -19,6 +19,8 @@ class Category {
       required this.parent,
       required this.title,
       required this.titleShortCode});
+
+// Converts Category object to toMap object get a map object to send to firebase
 
   Map<String, dynamic> toMap() {
     return {
@@ -31,6 +33,11 @@ class Category {
       'titleShortCode': titleShortCode,
     };
   }
+
+/*
+factory : factory Constructor returns an instance of a class
+fromDoc : To use the returned map object to class-object data
+ */
 
   factory Category.fromDoc(QueryDocumentSnapshot doc) {
     return Category(

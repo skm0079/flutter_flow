@@ -6,6 +6,8 @@ import 'package:flutter_flow/category_model.dart';
 import 'package:flutter_flow/top_bar_title.dart';
 import 'package:provider/provider.dart';
 
+import 'category_entry_page.dart';
+
 // Import the firebase_core plugin
 import 'package:firebase_core/firebase_core.dart';
 
@@ -59,6 +61,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final categoryCollection =
         FirebaseFirestore.instance.collection('category');
+    // For getting Firebase collection as stream
     final categoryStream = categoryCollection.snapshots().map((snapshot) {
       return snapshot.docs.map((doc) => Category.fromDoc(doc)).toList();
     });
@@ -82,6 +85,24 @@ class MyApp extends StatelessWidget {
           '/': (context) => const MyHomePage(
                 title: '',
               ),
+          '/new-entry': (context) => CategoryPage.add(
+              category: Category(
+                  categoryPrefName: "",
+                  categoryPrefShortCode: "",
+                  description: "",
+                  organisation: null,
+                  parent: null,
+                  title: "",
+                  titleShortCode: "")),
+          '/update': (context) => CategoryPage.edit(
+              category: Category(
+                  categoryPrefName: "",
+                  categoryPrefShortCode: "",
+                  description: "",
+                  organisation: null,
+                  parent: null,
+                  title: "",
+                  titleShortCode: "")),
         },
       ),
     );
@@ -94,7 +115,7 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
